@@ -1,0 +1,20 @@
+@mixin font-face($family, $filename, $weight, $style) {
+  @font-face{
+	font-family: $family;
+	src: url('/fonts/iransans/eot/#{$filename}.eot');
+	src: url('/fonts/iransans/eot/#{$filename}.eot?#iefix') format("embedded-opentype");
+	src: url('/fonts/iransans/woff/#{$filename}.woff') format("woff");
+	src: url('/fonts/iransans/woff2/#{$filename}.woff2') format("woff2");
+	src: url('/fonts/iransans/ttf/#{$filename}.ttf') format("truetype");
+	//src: url(/fonts/svg/#{$filename}.svg#08bb4ba465a902745fc23c83a5d9fdc2') format("svg");
+	font-style: $style;
+	font-weight: $weight;
+  }
+
+}
+@include font-face('IRANSans','IRANSansWeb(FaNum)_Black',900,'normal');
+@include font-face('IRANSans','IRANSansWeb(FaNum)_Bold','bold','normal');
+@include font-face('IRANSans','IRANSansWeb(FaNum)_Medium',500,'normal');
+@include font-face('IRANSans','IRANSansWeb(FaNum)_Light',300,'normal');
+@include font-face('IRANSans','IRANSansWeb(FaNum)_UltraLight',200,'normal');
+@include font-face('IRANSans','IRANSansWeb(FaNum)','normal','normal');
