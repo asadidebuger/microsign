@@ -2,6 +2,9 @@
   "name": "microsign",
   "version": "1.0.0",
   "private": true,
+  "engines" : {
+    "node" : "14.19.0"
+  },
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
