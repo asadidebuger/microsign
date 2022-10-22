@@ -14,9 +14,11 @@
     "lint": "yarn lint:js",
     "lintfix": "yarn lint:js --fix",
     "test": "jest",
-    "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup",
+    "deploy": "push-dir --dir=dist --branch=master --cleanup",
     "build:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt build",
-    "generate:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt build && nuxt export"
+    "generate:gh-pages": "DEPLOY_ENV=GH_PAGES nuxt build && nuxt export",
+    "build:master": "DEPLOY_ENV=MASTER nuxt build",
+    "generate:master": "DEPLOY_ENV=MASTER nuxt build && nuxt export"
   },
   "dependencies": {
     "@nuxt/content": "^1.15.1",
