@@ -39,11 +39,15 @@ export default {
   name:'profile',
 
   async asyncData ({ $content }) {
-    // console.log($nuxt,$content)
-    let path=`${$nuxt.$route.params.cat}/${$nuxt.$route.params.content}/${$nuxt.$locale().code}`;
+    // console.log($nuxt,$nuxt.$route.params);
+    let p1=$nuxt.$route.params.cat;
+    let p2=$nuxt.$route.params.content;
+    let p3=$nuxt.$locale().code;
+    // console.log(p1,p2,p3);
+    let path=`${p1}/${p2}/${p3}`;
     // console.log(path)
     const page = await $content(path).fetch();
-    console.log(page)
+    // console.log(page)
     return {
       page
     }
