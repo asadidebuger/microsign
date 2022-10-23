@@ -99,7 +99,6 @@
 
 <script lang="ts">
 import Vue from 'vue'
-
 export default Vue.extend({
 
   name: 'IndexPage',
@@ -109,7 +108,6 @@ export default Vue.extend({
       let path=`home/${$nuxt.$locale().code}`;
       // console.log(path)
       const page = await $content(path).fetch();
-      console.log(page)
       return {
         page
       }
@@ -121,7 +119,7 @@ export default Vue.extend({
   },
   computed:{
     title(){
-      return $nuxt.$t('microsign');
+      return this&&this.$t('microsign')||'MicroSign';
     }
   }
 
