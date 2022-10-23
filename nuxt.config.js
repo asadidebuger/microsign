@@ -91,10 +91,10 @@ export default {
     strategy: 'prefix_and_default',//no_prefix , prefix , prefix_and_default ,prefix_except_default
     // skipSettingLocaleOnNavigate: true,
     vueI18nLoader: true,
-    defaultLocale: process.env.LOCALE_DEFAULT,
+    defaultLocale: process.env.LOCALE_DEFAULT || 'en',
     langDir: '~/locales/',
     vueI18n: {
-      fallbackLocale: process.env.LOCALE_FALLBACK,
+      fallbackLocale: process.env.LOCALE_FALLBACK || 'en',
       // messages,
       silentTranslationWarn: true
     },
@@ -115,7 +115,7 @@ export default {
       // Set to always redirect to value stored in the cookie, not just once
       alwaysRedirect: false,
       // If no locale for the browsers locale is a match, use this one as a fallback
-      fallbackLocale: process.env.LOCALE_FALLBACK
+      fallbackLocale: process.env.LOCALE_FALLBACK || 'en'
     }
 
   },
