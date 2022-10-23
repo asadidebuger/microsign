@@ -64,7 +64,7 @@
                 <i class="ni ni-collection d-lg-none"></i>
                 <span class="nav-link-inner--text">{{$t('Products')}}</span>
               </a>
-              <router-link :to="`/${prefix}/product/wpcrudrest`" class="dropdown-item">{{$t('WPCrudRest')}}</router-link>
+              <router-link :to="`/${prefix}/content?cat=product&content=wpcrudrest`" class="dropdown-item">{{$t('WPCrudRest')}}</router-link>
             </base-dropdown>
             <router-link :to="`/${prefix}/blog`" class="nav-link"  role="button">
               <i class="fa fa-user d-lg-none"></i>
