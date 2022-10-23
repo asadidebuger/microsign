@@ -18,8 +18,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@master
-          with:
-            ref: source
+        with:
+          ref: source
 
       - name: Setup node env
         uses: actions/setup-node@v2.1.2
