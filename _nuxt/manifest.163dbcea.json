@@ -1,7 +1,6 @@
 {
   "name": "microsign",
   "short_name": "microsign",
-  "description": "## Build Setup",
   "icons": [
     {
       "src": "/_nuxt/icons/icon_64x64.912f81.png",
