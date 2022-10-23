@@ -39,7 +39,7 @@ export default {
   name:'profile',
 
   async asyncData ({ $content }) {
-    // console.log($nuxt,$nuxt.$route.params);
+    console.log($nuxt,$nuxt.$route.params);
     let p1=$nuxt.$route.params.cat;
     let p2=$nuxt.$route.params.content;
     let p3=$nuxt.$locale().code;
