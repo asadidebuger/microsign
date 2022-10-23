@@ -99,28 +99,24 @@
 
 <script >
 export default {
-  name: 'IndexPage',
+  name: 'index',
   layout: 'default',
-    async asyncData ({ $content }) {
-      // console.log($nuxt,$content)
-      let path=`home/${$nuxt.$locale().code}`;
-      // console.log(path)
-      const page = await $content(path).fetch();
-      return {
-        page
-      }
-    },
-  head(){
+  async asyncData({$content}) {
+    let path = `home/${$nuxt.$locale().code}`;
+    const page = await $content(path).fetch();
+    return {
+      page
+    }
+  },
+  head() {
     return {
       title: this.title
     }
   },
-  computed:{
-    title(){
+  computed: {
+    title() {
       return this.$t('microsign');
     }
   }
-
-
 }
 </script>
