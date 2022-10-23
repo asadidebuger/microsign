@@ -17,14 +17,14 @@
         <section class="section section-skew">
             <div class="container">
 
-              <card shadow class="card-profile mt--300" no-body>
+              <card v-if="content" shadow class="card-profile mt--300" no-body>
                     <div class="px-4">
                         <div class=" py-5 ">
                           <h1 class="text-center br">{{title}}</h1>
 
                             <div class="row justify-content-center border-top">
                                 <div class="content-container col-lg-9 mt-5">
-                                    <nuxt-content v-if="content" :document="content"></nuxt-content>
+                                    <nuxt-content  :document="content"></nuxt-content>
                                 </div>
                             </div>
                         </div>
@@ -116,10 +116,10 @@ export default {
   },
   computed:{
     title(){
-      return this.page && this.page.title || this.$t('microsign');
+      return this.page && this.page.title || '';
     },
     description(){
-      return this.page && this.page.description || this.$t('microsign');
+      return this.page && this.page.description || '';
     }
   }
 };
