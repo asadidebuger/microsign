@@ -14,7 +14,7 @@
     "lint": "yarn lint:js",
     "lintfix": "yarn lint:js --fix",
     "test": "jest",
-    "deploy": "push-dir --dir=dist --branch=master --cleanup",
+    "deploy": "push-dir --dir=dist --branch=master --cleanup"
     
   },
   "dependencies": {
