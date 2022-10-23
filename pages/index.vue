@@ -97,10 +97,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
-export default Vue.extend({
-
+<script >
+export default {
   name: 'IndexPage',
   layout: 'default',
     async asyncData ({ $content }) {
@@ -119,11 +117,10 @@ export default Vue.extend({
   },
   computed:{
     title(){
-      return this&&this.$t('microsign')||'MicroSign';
+      return this.t('microsign')||'MicroSign';
     }
   }
 
 
 }
-)
 </script>
