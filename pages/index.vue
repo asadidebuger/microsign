@@ -117,7 +117,7 @@ export default {
   },
   computed:{
     title(){
-      return this.t('microsign')||'MicroSign';
+      return this.$t('microsign');
     }
   }
 
