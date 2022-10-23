@@ -46,6 +46,7 @@ jobs:
           publish_dir: ./dist
           publish_branch: master
   deploy:
+    needs: cd
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
