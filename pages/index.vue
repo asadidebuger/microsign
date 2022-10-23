@@ -102,6 +102,7 @@ export default {
   name: 'index',
   layout: 'default',
   async asyncData({$content}) {
+    console.log('microsign v1');
     let path = `home/${$nuxt.$locale().code}`;
     const page = await $content(path).fetch();
     return {

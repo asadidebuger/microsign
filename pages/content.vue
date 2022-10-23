@@ -24,7 +24,7 @@
 
                             <div class="row justify-content-center border-top">
                                 <div class="content-container col-lg-9 mt-5">
-                                    <nuxt-content :document="page"></nuxt-content>
+                                    <nuxt-content v-if="content" :document="content"></nuxt-content>
                                 </div>
                             </div>
                         </div>
@@ -37,8 +37,46 @@
 <script>
 export default {
   name:'profile',
+  data(){
+    return {
+      content:null
+    }
 
-  async asyncData ({ $content }) {
+  },
+  async asyncData (args) {
+    console.log(args)
+    return {$content:args.$content}
+  },
+  //
+  // async asyncData ({ $content }) {
+  //   // console.log($nuxt,$nuxt.$route.query);
+  //   let getPath=new Promise((resolve, reject)=>{
+  //     let check= ()=>{
+  //       if (!$nuxt.$route.query.cat) {
+  //         setTimeout(check, 100);
+  //         console.log('s',$nuxt.$route.query.cat,$nuxt.$route)
+  //         return;
+  //       }
+  //       let p1=$nuxt.$route.query.cat;
+  //       let p2=$nuxt.$route.query.content;
+  //       let p3=$nuxt.$route.query.lang || $nuxt.$locale().code;
+  //       resolve(`${p1}/${p2}/${p3}`)
+  //     }
+  //     check();
+  //     // console.log(p1,p2,p3);
+  //     // let path=`${p1}/${p2}/${p3}`;
+  //     // console.log(path)
+  //
+  //
+  //   })
+  //   let path=await getPath;
+  //   let page = await $content(path).fetch();
+  //   // console.log(page)
+  //   return {
+  //     page
+  //   }
+  // },
+  async mounted() {
     // console.log($nuxt,$nuxt.$route.query);
     let getPath=new Promise((resolve, reject)=>{
       let check= ()=>{
@@ -60,11 +98,9 @@ export default {
 
     })
     let path=await getPath;
-    let page = await $content(path).fetch();
+    this.content = await this.$content(path).fetch();
     // console.log(page)
-    return {
-      page
-    }
+
   },
   head(){
     return {
