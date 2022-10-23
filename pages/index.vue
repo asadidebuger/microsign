@@ -121,7 +121,7 @@ export default Vue.extend({
   },
   computed:{
     title(){
-      return this.$t('microsign');
+      return $nuxt.$t('microsign');
     }
   }
 
