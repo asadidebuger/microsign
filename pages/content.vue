@@ -44,6 +44,7 @@ export default {
       let check= ()=>{
         if (!$nuxt.$route.query.cat) {
           setTimeout(check, 100);
+          console.log('s',$nuxt.$route.query.cat,$nuxt.$route)
           return;
         }
         let p1=$nuxt.$route.query.cat;
