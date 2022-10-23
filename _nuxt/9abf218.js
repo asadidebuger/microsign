@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[58],{528:function(n,o,t){"use strict";t.r(o),t.d(o,"menu",(function(){return menu}));var menu=[{to:"/profile",title:"About me",icon:""}]}}]);
