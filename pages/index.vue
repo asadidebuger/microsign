@@ -114,9 +114,14 @@ export default {
       title: this.title,
       meta: [
         {
-          hid: this.page.description,
-          name: this.page.title,
+          property: 'og:description',
+          name: 'description',
           content: this.page.description
+        },
+        {
+          property: 'og:title',
+          name: 'title',
+          content: this.page.title
         }
       ],
     }

@@ -17,9 +17,10 @@
         <section class="section section-skew">
             <div class="container">
 
-              <card v-if="content" shadow class="card-profile mt--300" no-body>
+              <card v-if="content" shadow style="margin-top: -400px"  no-body>
                     <div class="px-4">
-                        <div class=" py-5 ">
+                        <div class=" py-3 ">
+                          <span>{{$t('in category')}}:</span> <router-link :to="`/${prefix}/content?cat=${category}`">{{$t(category)}}</router-link>
                           <h1 class="text-center br">{{title}}</h1>
 
                             <div class="row justify-content-center border-top">
@@ -30,6 +31,31 @@
                         </div>
                     </div>
                 </card>
+                <card v-else-if="contents" shadow style="margin-top: -400px"  no-body>
+                  <div class="px-4">
+                    <div class=" py-3 ">
+                      <span>{{$t('in category')}}: {{$t(category)}}</span>
+                      <h1 class="text-center br">{{title}}</h1>
+
+                      <div class="row justify-content-center border-top">
+                        <ul class="content-container col-lg-9 mt-5 list-unstyled">
+                          <li v-for="(c,i) of contents" :key="'item'+i">
+                            <router-link :to="'/'+prefix+'/content?cat='+category+'&content='+getContentName(c.dir)">
+                              <h2>{{c.title}}</h2>
+                              <p>{{c.description}}</p>
+                              <hr>
+                            </router-link>
+
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </card>
+
+
+
+
             </div>
         </section>
     </div>
@@ -39,88 +65,86 @@ export default {
   name:'profile',
   data(){
     return {
-      content:null
+      category:null,
+      content:null,
+      contents:null,
+      filename:null,
     }
-
   },
   async asyncData (args) {
-    console.log(args)
-    return {$content:args.$content}
+    const {$content,query} =args;
+
+
+    return {$content}
   },
-  //
-  // async asyncData ({ $content }) {
-  //   // console.log($nuxt,$nuxt.$route.query);
-  //   let getPath=new Promise((resolve, reject)=>{
-  //     let check= ()=>{
-  //       if (!$nuxt.$route.query.cat) {
-  //         setTimeout(check, 100);
-  //         console.log('s',$nuxt.$route.query.cat,$nuxt.$route)
-  //         return;
-  //       }
-  //       let p1=$nuxt.$route.query.cat;
-  //       let p2=$nuxt.$route.query.content;
-  //       let p3=$nuxt.$route.query.lang || $nuxt.$locale().code;
-  //       resolve(`${p1}/${p2}/${p3}`)
-  //     }
-  //     check();
-  //     // console.log(p1,p2,p3);
-  //     // let path=`${p1}/${p2}/${p3}`;
-  //     // console.log(path)
-  //
-  //
-  //   })
-  //   let path=await getPath;
-  //   let page = await $content(path).fetch();
-  //   // console.log(page)
-  //   return {
-  //     page
-  //   }
-  // },
   async mounted() {
-    // console.log($nuxt,$nuxt.$route.query);
-    let getPath=new Promise((resolve, reject)=>{
-      let check= ()=>{
-        if (!$nuxt.$route.query.cat) {
-          setTimeout(check, 100);
-          console.log('s',$nuxt.$route.query.cat,$nuxt.$route)
-          return;
-        }
-        let p1=$nuxt.$route.query.cat;
-        let p2=$nuxt.$route.query.content;
-        let p3=$nuxt.$route.query.lang || $nuxt.$locale().code;
-        resolve(`${p1}/${p2}/${p3}`)
-      }
-      check();
-      // console.log(p1,p2,p3);
-      // let path=`${p1}/${p2}/${p3}`;
-      // console.log(path)
-
-
-    })
-    let path=await getPath;
-    this.content = await this.$content(path).fetch();
-    // console.log(page)
-
+    await this.init(this.$content,this.$route.query);
   },
   head(){
     return {
       title: this.title,
       meta: [
         {
-          hid: this.description,
-          name: this.description,
+          property: 'og:description',
+          name: 'description',
           content: this.description
+        },
+        {
+          property: 'og:title',
+          name: 'title',
+          content: this.title
         }
       ],
     }
   },
+  methods:{
+    async init($content,query){
+      let content=null;
+      let contents=null;
+      let category=query.cat;
+      let filename=query.content;
+      let lang=query.lang || $nuxt.$locale().code;
+      if (filename) content = await $content(`${category}/${filename}/${lang}`).fetch();
+      else {
+        contents = await $content(category,{ deep: true }).fetch();
+        let lang=this.prefix;
+        contents=contents.filter(c=>{return c.slug===lang});
+      }
+
+      // console.log(contents);
+      this.category=category;
+      this.filename=filename;
+      this.contents=contents;
+      this.content=content;
+
+    },
+    getContentName(dir){
+      let cat=this.category;
+      let name=dir.substring(dir.indexOf(cat)+cat.length+1);
+      // name=name.substring(0,name.length-1)
+      console.log(name);
+      return name;
+
+    }
+  },
   computed:{
     title(){
-      return this.content && this.content.title || '';
+      if (this.content) return this.content && this.content.title || '';
+      if (this.category) return this.$t(this.category);
+      return ''
+    },
+    prefix(){
+      return this.$locale().code;
     },
     description(){
-      return this.content && this.content.description || '';
+      if (this.content) return this.content && this.content.description || '';
+      if (this.category) return this.$t(this.category);
+      return '';
     }
+  },
+  watchQuery(newQuery, oldQuery){
+    this.init(this.$content,newQuery)
+
   }
 };
 </script>

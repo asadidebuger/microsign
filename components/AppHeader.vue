@@ -60,13 +60,13 @@
 <!--                  <router-link to="/register" class="dropdown-item">Register</router-link>-->
 <!--              </base-dropdown>-->
             <base-dropdown tag="li" class="nav-item">
-              <a slot="title" href="#" class="nav-link" data-toggle="dropdown" role="button">
+              <router-link slot="title" :to="`/${prefix}/content?cat=products`" class="nav-link" data-toggle="dropdown" role="button">
                 <i class="ni ni-collection d-lg-none"></i>
                 <span class="nav-link-inner--text">{{$t('Products')}}</span>
-              </a>
-              <router-link :to="`/${prefix}/content?cat=product&content=wpcrudrest`" class="dropdown-item">{{$t('WPCrudRest')}}</router-link>
+              </router-link>
+              <router-link :to="`/${prefix}/content?cat=products&content=wpcrudrest`" class="dropdown-item">{{$t('WPCrudRest')}}</router-link>
             </base-dropdown>
-            <router-link :to="`/${prefix}/blog`" class="nav-link"  role="button">
+            <router-link :to="`/${prefix}/content?cat=blog`" class="nav-link"  role="button">
               <i class="fa fa-user d-lg-none"></i>
               <span class="nav-link-inner--text">{{$t('Blog')}}</span>
             </router-link>
