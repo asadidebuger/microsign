@@ -1,6 +1,9 @@
 name: cd
 
 on:
+  push:
+    branches:
+      - source
   workflow_dispatch:
 
 jobs:
