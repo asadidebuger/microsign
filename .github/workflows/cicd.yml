@@ -5,10 +5,7 @@ on:
     branches:
       - source
   workflow_dispatch:
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+permissions: read-all|write-all
 
 concurrency:
   group: "pages"
@@ -39,7 +36,7 @@ jobs:
       - name: Generate
         run: yarn generate
 
-      - name: Deploy1
+      - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
