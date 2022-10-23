@@ -18,7 +18,7 @@
         <div class="container shape-container d-flex">
           <div class="col px-0">
             <div class="row">
-              <div class="col-lg-6">
+              <div class="col-lg-8">
                 <h1 class="display-3  text-white">{{ page.title }}
                   <span>{{ page.description }}</span>
                 </h1>
@@ -102,7 +102,7 @@ export default {
   name: 'index',
   layout: 'default',
   async asyncData({$content}) {
-    console.log('microsign v1');
+    console.log('microsign v2');
     let path = `home/${$nuxt.$locale().code}`;
     const page = await $content(path).fetch();
     return {
@@ -111,8 +111,16 @@ export default {
   },
   head() {
     return {
-      title: this.title
+      title: this.title,
+      meta: [
+        {
+          hid: this.page.description,
+          name: this.page.title,
+          content: this.page.description
+        }
+      ],
     }
+
   },
   computed: {
     title() {

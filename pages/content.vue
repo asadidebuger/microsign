@@ -116,10 +116,10 @@ export default {
   },
   computed:{
     title(){
-      return this.page && this.page.title || '';
+      return this.content && this.content.title || '';
     },
     description(){
-      return this.page && this.page.description || '';
+      return this.content && this.content.description || '';
     }
   }
 };
