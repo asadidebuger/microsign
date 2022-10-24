@@ -67,8 +67,19 @@ export default {
     '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
-    'nuxt-i18n'
+    'nuxt-i18n',
+    '@nuxtjs/sitemap'
   ],
+  sitemap: {
+    hostname: 'https://microsign.ir',
+    // shortcut notation (basic)
+    i18n: true,
+    // nuxt-i18n notation (advanced)
+    // i18n: {
+    //   locales: ['en', 'es',],
+    //   routesNameSeparator: '___'
+    // }
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
