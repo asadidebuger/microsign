@@ -54,8 +54,17 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
-    'nuxt-moment-jalaali'
+    'nuxt-moment-jalaali',
+    '@nuxtjs/google-analytics'
   ],
+  googleAnalytics: {
+    id: 'UA-154135892-1' // Use as fallback if no runtime config is provided
+  },
+  // publicRuntimeConfig: {
+  //   googleAnalytics: {
+  //     id: process.env.GOOGLE_ANALYTICS_ID
+  //   }
+  // },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
