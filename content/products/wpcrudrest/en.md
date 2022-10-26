@@ -9,9 +9,9 @@ This tool is the result of a master's thesis in [MDSE research group at Isfahan 
 WPCrudRest framework is currently only available as a plugin for Eclipse. It used [Sirius](https://www.eclipse.org/sirius/) to provide a graphical modelling environment and [Acceleo](https://www.eclipse.org/acceleo/download.html) to transform models to code.
 ## Please participate in the evaluation
 You can participate in the evaluation of the WPCrudRest framework through the following links:
-* **[Evaluation participate (English language)](/en/content/?cat=blog&content=wpcrudrest-eval)**
+* **[Evaluation participate (English language)](/en/blog/wpcrudrest-eval)**
 
-* **[مشارکت در ارزیابی (فارسی)](/fa/content/?cat=blog&content=wpcrudrest-eval)**
+* **[مشارکت در ارزیابی (فارسی)](/fa/blog/wpcrudrest-eval)**
 
 _WPCrudRest Framework and created WordPress plugin demo:_
 ![WPCrudRest WordPress plugin creator](/content/wpcrudrest/wpcrudrest.gif)

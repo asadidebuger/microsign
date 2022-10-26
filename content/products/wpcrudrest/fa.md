@@ -8,9 +8,9 @@ description: WPCrudRest ابزاری است که با استفاده از آن �
 چارچوب WPCrudRest در حال حاضر فقط به عنوان یک افزونه برای Eclipse در دسترس است. از [Sirius](https://www.eclipse.org/sirius/) برای ارائه یک محیط مدل‌سازی گرافیکی و [Acceleo](https://www.eclipse.org/acceleo/download.html) برای تبدیل مدل‌ها به کد
 ## لطفا در ارزیابی شرکت کنید
 از طریق لینک های زیر می توانید در ارزیابی چارچوب WPCrudRest شرکت کنید:
-* **[Evaluation participate (English language)](/en/content/?cat=blog&content=wpcrudrest-eval)**
+* **[Evaluation participate (English language)](/en/blog/wpcrudrest-eval)**
 
-* **[مشارکت در ارزیابی (فارسی)](/fa/content/?cat=blog&content=wpcrudrest-eval)**
+* **[مشارکت در ارزیابی (فارسی)](/fa/blog/wpcrudrest-eval)**
 
 _WPCrudRest Framework و نسخه ی نمایشی افزونه وردپرس ایجاد شده:_
 ![سازنده پلاگین وردپرس WPCrudRest](/content/wpcrudrest/wpcrudrest.gif)
