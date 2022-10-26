@@ -25,7 +25,7 @@
                             </div>
                             <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
                                 <div class="card-profile-actions py-4 mt-lg-0">
-                                  <a class="btn btn-info nav-link nav-link-icon mr-4" href="https://www.linkedin.com/in/mohammad-asadi-8ab426158/" target="_blank" rel="noopener"
+                                  <a class="btn btn-primary mr-4" href="https://www.linkedin.com/in/mohammad-asadi-8ab426158/" target="_blank" rel="noopener"
                                      data-toggle="tooltip" :title="$t('Connect to me')" >
                                     <i class="fa fa-linkedin-square"></i>
                                     <span class="nav-link-inner--text">{{$t('Connect to me')}}</span>
@@ -54,7 +54,7 @@
                                 <small class="font-weight-light ltr">(@asadidebuger)</small>
                             </h3>
                             <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i><span class="fa fa-map-marker"></span> {{$t('Islamic Republic of Iran, Isfahan')}}</div>
-                            <div class="h6 mt-4"><i class="ni business_briefcase-24 mr-2"></i>{{$t('MDSE research group')}}</div>
+                            <a href="https://mdse.ui.ac.ir/" target="_blank"><div class="h6 mt-4"><i class="ni business_briefcase-24 mr-2"></i>{{$t('MDSE research group')}}</div></a>
                             <div><i class="ni education_hat mr-2"></i>{{$t('Faculty of Computer Engineering, University of Isfahan')}}</div>
                         </div>
                         <div class="mt-5 py-5 border-top text-center">

@@ -20,7 +20,7 @@
               <card v-if="content" shadow style="margin-top: -400px"  no-body>
                     <div class="px-4">
                         <div class=" py-3 ">
-                          <span>{{$t('in category')}}:</span> <router-link :to="`/${prefix}/content?cat=${category}`">{{$t(category)}}</router-link>
+                          <span>{{$t('in category')}}:</span> <router-link :to="`/${prefix}/${category}`">{{$t(category)}}</router-link>
                           <h1 class="text-center br">{{title}}</h1>
 
                             <div class="row justify-content-center border-top">
@@ -40,7 +40,7 @@
                       <div class="row justify-content-center border-top">
                         <ul class="content-container col-lg-9 mt-5 list-unstyled">
                           <li v-for="(c,i) of contents" :key="'item'+i">
-                            <router-link :to="'/'+prefix+'/content?cat='+category+'&content='+getContentName(c.dir)">
+                            <router-link :to="'/'+prefix+'/'+category+'/'+getContentName(c.dir)">
                               <h2>{{c.title}}</h2>
                               <p>{{c.description}}</p>
                               <hr>
@@ -65,21 +65,39 @@ export default {
   name:'profile',
   data(){
     return {
-      category:null,
-      content:null,
-      contents:null,
-      filename:null,
+      // category:null,
+      // content:null,
+      // contents:null,
+      // filename:null,
     }
   },
   async asyncData (args) {
-    const {$content,query} =args;
+    const {$content,query,params} =args;
+
+    let content=null;
+    let contents=null;
+    let category=params.category;
+    let filename=params.content;
+    let lang=params.lang || $nuxt.$locale().code;
+    if (filename) content = await $content(`${category}/${filename}/${lang}`).fetch();
+    else {
+      contents = await $content(category,{ deep: true }).fetch();
+      // let lang=this.prefix;
+      contents=contents.filter(c=>{return c.slug===lang});
+    }
+
+    // // console.log(contents);
+    // this.category=category;
+    // this.filename=filename;
+    // this.contents=contents;
+    // this.content=content;
 
 
-    return {$content}
+    return {$content,category,filename,contents,content}
   },
-  async mounted() {
-    await this.init(this.$content,this.$route.query);
-  },
+  // async mounted() {
+  //   await this.init(this.$content,this.$route.query);
+  // },
   head(){
     return {
       title: this.title,
@@ -98,31 +116,31 @@ export default {
     }
   },
   methods:{
-    async init($content,query){
-      let content=null;
-      let contents=null;
-      let category=query.cat;
-      let filename=query.content;
-      let lang=query.lang || $nuxt.$locale().code;
-      if (filename) content = await $content(`${category}/${filename}/${lang}`).fetch();
-      else {
-        contents = await $content(category,{ deep: true }).fetch();
-        let lang=this.prefix;
-        contents=contents.filter(c=>{return c.slug===lang});
-      }
-
-      // console.log(contents);
-      this.category=category;
-      this.filename=filename;
-      this.contents=contents;
-      this.content=content;
-
-    },
+    // async init($content,query,params){
+    //   let content=null;
+    //   let contents=null;
+    //   let category=params.category;
+    //   let filename=params.content;
+    //   let lang=params.lang || $nuxt.$locale().code;
+    //   if (filename) content = await $content(`${category}/${filename}/${lang}`).fetch();
+    //   else {
+    //     contents = await $content(category,{ deep: true }).fetch();
+    //     let lang=this.prefix;
+    //     contents=contents.filter(c=>{return c.slug===lang});
+    //   }
+    //
+    //   // console.log(contents);
+    //   this.category=category;
+    //   this.filename=filename;
+    //   this.contents=contents;
+    //   this.content=content;
+    //
+    // },
     getContentName(dir){
       let cat=this.category;
       let name=dir.substring(dir.indexOf(cat)+cat.length+1);
       // name=name.substring(0,name.length-1)
-      console.log(name);
+      // console.log(name);
       return name;
 
     }
@@ -142,10 +160,9 @@ export default {
       return '';
     }
   },
-  watchQuery(newQuery, oldQuery){
-    this.init(this.$content,newQuery)
-
-  }
+  // watchQuery(newQuery, oldQuery){
+  //   this.init(this.$content,newQuery)
+  // }
 };
 </script>
 <style>
