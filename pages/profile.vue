@@ -54,8 +54,10 @@
                                 <small class="font-weight-light ltr">(@asadidebuger)</small>
                             </h3>
                             <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i><span class="fa fa-map-marker"></span> {{$t('Islamic Republic of Iran, Isfahan')}}</div>
-                            <a href="https://mdse.ui.ac.ir/" target="_blank"><div class="h6 mt-4"><i class="ni business_briefcase-24 mr-2"></i>{{$t('MDSE research group')}}</div></a>
-                            <div><i class="ni education_hat mr-2"></i>{{$t('Faculty of Computer Engineering, University of Isfahan')}}</div>
+                            <a href="https://mdse.ui.ac.ir/" target="_blank"><div class="h6 mt-4"><i class="ni ni-hat-3 mr-2"></i> {{$t('MDSE research group')}}</div></a>
+                            <div><i class="ni  mr-2"></i> {{$t('Faculty of Computer Engineering, University of Isfahan')}}</div>
+                          <br>
+                            <div><i class="ni ni-briefcase-24 mr-2"></i> {{$t('AboutMeExtra')}}</div>
                         </div>
                         <div class="mt-5 py-5 border-top text-center">
                             <div class="row justify-content-center">
@@ -79,7 +81,24 @@ export default {
     return {
       page
     }
-  }
+  },
+  head(){
+    return {
+      title: this.page.title,
+      meta: [
+        {
+          property: 'og:description',
+          name: 'description',
+          content: this.page.description
+        },
+        {
+          property: 'og:title',
+          name: 'title',
+          content: this.page.title
+        }
+      ],
+    }
+  },
 };
 </script>
 <style>

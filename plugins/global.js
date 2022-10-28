@@ -17,8 +17,8 @@ import Vue from 'vue'
 // Formio.projectId='111111111111111111111111';
 
 
-import "@/assets/vendor/nucleo/css/nucleo.css";
-import "@/assets/vendor/font-awesome/css/font-awesome.css";
+import "@/assets/css/nucleo/nucleo.css";
+import "@/assets/css/font-awesome/font-awesome.css";
 import "@/assets/scss/argon.scss";
 import clickOutside from "../utils/click-ouside.js";
 // import globalComponents from "./globalComponents";
