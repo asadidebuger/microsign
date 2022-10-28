@@ -1,6 +1,32 @@
 require('dotenv').config();
-// const locales=[{code:'fa',file:locale+'.json',dir:'rtl',name:'fa'}]
+const locales=[
+  { code: 'en', iso: 'en-US', file: 'en.json', dir: 'ltr',name:'English' },
+  { code: 'fa', iso: 'fa-IR', file: 'fa.json', dir: 'rtl',name:'فارسی' }
+]
+const path = require('path');
+const appDir =path.join(__dirname,'content');
+const fs = require('fs');
+console.log(appDir)
 
+const routes=[];
+const cats=fs.readdirSync(appDir);
+cats.forEach(cat=>{
+  if (cat.startsWith('_'))return;
+  let d=path.join(appDir,cat);
+  let contents= fs.readdirSync(d);
+  contents.forEach(c=>{
+
+    let p=cat+'/'+c;
+    routes.push(p)
+    locales.forEach(l=>{
+      routes.push(l.code+'/'+p)
+    })
+  })
+})
+// const files=cats.map(r=>{
+//
+// })
+console.log(routes)
 
 export default {
   env:process.env,
@@ -108,10 +134,7 @@ export default {
     }
   },
   i18n: {
-    locales:[
-      { code: 'en', iso: 'en-US', file: 'en.json', dir: 'ltr',name:'English' },
-      { code: 'fa', iso: 'fa-IR', file: 'fa.json', dir: 'rtl',name:'فارسی' }
-    ]
+    locales
     ,
     strategy: 'prefix_and_default',//no_prefix , prefix , prefix_and_default ,prefix_except_default
     // skipSettingLocaleOnNavigate: true,
@@ -152,6 +175,7 @@ export default {
   build: {
   },
   generate: {
-    fallback: true
+    routes,
+    exclude: []
   }
 }

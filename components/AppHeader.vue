@@ -123,11 +123,11 @@
     </header>
 </template>
 <script>
-const menus =import('../content/menu');
+// const menus =import('../content/menu');
 export default {
   data() {
     return {
-      menu: menus,
+      // menu: menus,
     }
   },
   // mounted() {

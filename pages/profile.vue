@@ -77,7 +77,7 @@ export default {
   name:'profile',
 
   async asyncData ({ $content }) {
-    const page = await $content('profile/'+$nuxt.$locale().code).fetch();
+    const page = await $content('_microsign/profile/'+$nuxt.$locale().code).fetch();
     return {
       page
     }
