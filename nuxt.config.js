@@ -26,7 +26,7 @@ cats.forEach(cat=>{
 // const files=cats.map(r=>{
 //
 // })
-console.log(routes)
+// console.log(routes)
 
 export default {
   env:process.env,
