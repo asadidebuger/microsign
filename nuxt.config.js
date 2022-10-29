@@ -6,7 +6,7 @@ const locales=[
 const path = require('path');
 const appDir =path.join(__dirname,'content');
 const fs = require('fs');
-console.log(appDir)
+// console.log(appDir)
 
 const routes=[];
 const cats=fs.readdirSync(appDir);
@@ -14,10 +14,13 @@ cats.forEach(cat=>{
   if (cat.startsWith('_'))return;
   let d=path.join(appDir,cat);
   let contents= fs.readdirSync(d);
+  locales.forEach(l=>{
+    routes.push(l.code+'/'+cat)
+  })
   contents.forEach(c=>{
 
     let p=cat+'/'+c;
-    routes.push(p)
+    // routes.push(p)
     locales.forEach(l=>{
       routes.push(l.code+'/'+p)
     })
@@ -26,7 +29,7 @@ cats.forEach(cat=>{
 // const files=cats.map(r=>{
 //
 // })
-// console.log(routes)
+console.log(routes)
 
 export default {
   env:process.env,
@@ -110,8 +113,6 @@ export default {
     // shortcut notation (basic)
     i18n: true,
     exclude: [
-      '/en/landing',
-      '/fa/landing'
     ],
     gzip: true,
     // nuxt-i18n notation (advanced)
@@ -136,7 +137,7 @@ export default {
   i18n: {
     locales
     ,
-    strategy: 'prefix_and_default',//no_prefix , prefix , prefix_and_default ,prefix_except_default
+    strategy: 'no_prefix',//no_prefix , prefix , prefix_and_default ,prefix_except_default
     // skipSettingLocaleOnNavigate: true,
     vueI18nLoader: true,
     defaultLocale: process.env.LOCALE_DEFAULT||'en',

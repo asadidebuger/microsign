@@ -17,5 +17,9 @@ export default function({ app }, inject) {
     if ((app.i18n.locale?.code)===code)return app.i18n.locale;
     return app.i18n.locales.find((x) => x.code === code);
   }
+  const setLocale=(code)=>{
+    app.i18n.setLocale(code);
+  }
   inject( 'locale', locale);
+  inject( 'setLocale', setLocale);
 }
