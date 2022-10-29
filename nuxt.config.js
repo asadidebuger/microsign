@@ -137,35 +137,36 @@ export default {
   i18n: {
     locales
     ,
-    strategy: 'no_prefix',//no_prefix , prefix , prefix_and_default ,prefix_except_default
-    // skipSettingLocaleOnNavigate: true,
+    strategy: 'prefix',//no_prefix , prefix , prefix_and_default ,prefix_except_default
+    // skipSettingLocaleOnNavigate: false,
     vueI18nLoader: true,
     defaultLocale: process.env.LOCALE_DEFAULT||'en',
     langDir: '~/locales/',
     vueI18n: {
-      fallbackLocale: process.env.LOCALE_FALLBACK||'en',
+      // fallbackLocale: process.env.LOCALE_FALLBACK||'en',
       // messages,
       silentTranslationWarn: true
     },
-    detectBrowserLanguage: {
-      // If enabled, a cookie is set once a user has been redirected to his
-      // preferred language to prevent subsequent redirections
-      // Set to false to redirect every time
-      useCookie: true,
-      // Set `SameSite=None; Secure` to allow cross-domain use of the cookie (required when app is
-      // embedded in an iframe).
-      cookieCrossOrigin: false,
-      // Set to override the default domain of the cookie. Defaults to host of the site.
-      cookieDomain: null,
-      // Cookie name
-      cookieKey: 'lang',
-      // Sets the `Secure` flag for the cookie.
-      cookieSecure: false,
-      // Set to always redirect to value stored in the cookie, not just once
-      alwaysRedirect: false,
-      // If no locale for the browsers locale is a match, use this one as a fallback
-      fallbackLocale: process.env.LOCALE_FALLBACK||'en'
-    }
+    detectBrowserLanguage: false
+    // detectBrowserLanguage: {
+    //   // If enabled, a cookie is set once a user has been redirected to his
+    //   // preferred language to prevent subsequent redirections
+    //   // Set to false to redirect every time
+    //   useCookie: false,
+    //   // Set `SameSite=None; Secure` to allow cross-domain use of the cookie (required when app is
+    //   // embedded in an iframe).
+    //   cookieCrossOrigin: false,
+    //   // Set to override the default domain of the cookie. Defaults to host of the site.
+    //   cookieDomain: null,
+    //   // Cookie name
+    //   cookieKey: 'lang',
+    //   // Sets the `Secure` flag for the cookie.
+    //   cookieSecure: false,
+    //   // Set to always redirect to value stored in the cookie, not just once
+    //   alwaysRedirect: false,
+    //   // If no locale for the browsers locale is a match, use this one as a fallback
+    //   // fallbackLocale: process.env.LOCALE_FALLBACK||'en'
+    // }
 
   },
 

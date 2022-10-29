@@ -100,6 +100,7 @@ export default {
   // },
   head(){
     return {
+      ...this.$nuxtI18nHead({ addDirAttribute: true, addSeoAttributes: true }),
       title: this.title,
       meta: [
         {
