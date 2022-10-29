@@ -10,22 +10,27 @@ const fs = require('fs');
 
 const routes=[];
 const cats=fs.readdirSync(appDir);
+const sitemapEx=[];
 cats.forEach(cat=>{
   if (cat.startsWith('_'))return;
   let d=path.join(appDir,cat);
   let contents= fs.readdirSync(d);
+  sitemapEx.push('/'+cat)
   locales.forEach(l=>{
-    routes.push(l.code+'/'+cat)
+    routes.push('/'+l.code+'/'+cat)
+
   })
   contents.forEach(c=>{
 
     let p=cat+'/'+c;
-    // routes.push(p)
+    sitemapEx.push('/'+p)
     locales.forEach(l=>{
-      routes.push(l.code+'/'+p)
+      routes.push('/'+l.code+'/'+p)
+
     })
   })
 })
+routes.push(...sitemapEx);
 // const files=cats.map(r=>{
 //
 // })
@@ -112,8 +117,7 @@ export default {
     hostname: 'https://microsign.ir',
     // shortcut notation (basic)
     i18n: true,
-    exclude: [
-    ],
+    exclude: sitemapEx,
     gzip: true,
     // nuxt-i18n notation (advanced)
     // i18n: {
