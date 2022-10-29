@@ -143,7 +143,7 @@ export default {
     defaultLocale: process.env.LOCALE_DEFAULT||'en',
     langDir: '~/locales/',
     vueI18n: {
-      // fallbackLocale: process.env.LOCALE_FALLBACK||'en',
+      fallbackLocale: process.env.LOCALE_FALLBACK||'en',
       // messages,
       silentTranslationWarn: true
     },
