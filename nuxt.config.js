@@ -10,7 +10,7 @@ const fs = require('fs');
 
 const routes=[];
 const cats=fs.readdirSync(appDir);
-const sitemapEx=[];
+const sitemapEx=['/content'];
 cats.forEach(cat=>{
   if (cat.startsWith('_'))return;
   let d=path.join(appDir,cat);
