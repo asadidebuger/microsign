@@ -10,7 +10,7 @@ const fs = require('fs');
 
 const routes=[];
 const cats=fs.readdirSync(appDir);
-const sitemapEx=['/content'];
+const sitemapEx=[];
 // locales.forEach(l=>{
 //   routes.push('/'+l.code+'/content')
 //
