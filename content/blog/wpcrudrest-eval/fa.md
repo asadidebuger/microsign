@@ -1,10 +1,11 @@
 ---
 title: مشارکت در ارزیابی افزونه ساز WPCrudRest
 description: 'درصورتی که تمایل دارید در ارزیابی افزونه ساز وردپرس WPCrudRest شرکت کنید بعد از کار با ابزار پرسش نامه را تکمیل کنید'
+order: 10
 ---
-&#x202b;
-## الف)
-&#x202b;
+
+## الف) مقدمه
+
 قصد داریم شاکله ی اصلی یک افزونه ی وردپرس جهت مدیریت کتابخانه را با چارچوب 
 WP-CRUD-REST
 تولید کنیم. نمودار کلاس اجزای اصلی این افزونه در شکل نمایش داده شده است.
@@ -28,13 +29,13 @@ WP-CRUD-REST
 ![Simple library class-diagram](/content/wpcrudrest/classdiagram-lib.png)
 
 
-## ب)
+## ب) ایجاد تغییرات
 **بعد از ایجاد افزونه سعی کنید در قسمت UI تغییراتی ایجاد کنید و با استقرار مجدد افزونه اعمال صحیح تغییرات را بررسی کنید.**
 
 
-## ج)
+## ج) تکمیل پرسش‌نامه
 
-**باتوجه به تجربه ای که به دست آورده اید
+**باتوجه به تجربه‌ای که به دست آورده اید
  [پرسش نامه ](https://docs.google.com/forms/d/e/1FAIpQLSf2H-mzP1cNXAaVREjEYtLAD6XTrCxFX9oGl1c6Aun24wwK5w/viewform)
 را تکمیل و چارچوب ارائه شده را ارزیابی کنید:
-[تکمیل پرسش نامه ](https://docs.google.com/forms/d/e/1FAIpQLSf2H-mzP1cNXAaVREjEYtLAD6XTrCxFX9oGl1c6Aun24wwK5w/viewform)**
+[تکمیل پرسش‌نامه ](https://docs.google.com/forms/d/e/1FAIpQLSf2H-mzP1cNXAaVREjEYtLAD6XTrCxFX9oGl1c6Aun24wwK5w/viewform)**

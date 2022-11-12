@@ -24,14 +24,34 @@
                           <h1 class="text-center br">{{title}}</h1>
 
                             <div class="row justify-content-center border-top">
-                                <div class="content-container col-lg-9 mt-5">
-                                    <nuxt-content  :document="content"></nuxt-content>
+                              <aside class="toc-container col-lg-3 mt-5" >
+                                <div class="sticky top-16">
+                                  <h4
+                                    class="uppercase text-black font-h2 text-lg lg:mt-16 tracking-wider"
+                                  >
+                                    {{$t('Table of contents')}}
+                                  </h4>
+                                  <nav class="mt-4">
+                                    <ul class="toc" >
+                                      <li :class="'depth-'+link.depth" v-for="link of content.toc" :key="link.id">
+                                        <a role="button" class="transition-colors duration-75 text-base mb-2 block "
+                                          :href="`#${link.id}`">{{ link.text }}</a>
+                                      </li>
+                                    </ul>
+                                  </nav>
                                 </div>
+                              </aside>
+                              <div class="content-container col-lg-9 mt-5">
+                                  <nuxt-content  :document="content" tag="article"></nuxt-content>
+                              </div>
                             </div>
                         </div>
                     </div>
                 </card>
                 <card v-else-if="contents" shadow style="margin-top: -400px"  no-body>
+                  <div class="input-group">
+                      <input type="search"  class="form-control" :placeholder="$t('Filter')" v-model="key"/>
+                  </div>
                   <div class="px-4">
                     <div class=" py-3 ">
                       <span>{{$t('in category')}}: {{$t(category)}}</span>
@@ -52,10 +72,6 @@
                     </div>
                   </div>
                 </card>
-
-
-
-
             </div>
         </section>
     </div>
@@ -65,6 +81,7 @@ export default {
   name:'profile',
   data(){
     return {
+      key:'',
       // category:null,
       // content:null,
       // contents:null,
@@ -79,11 +96,15 @@ export default {
     let category=params.category;
     let filename=params.content;
     let lang=params.lang || $nuxt.$locale().code;
-    if (filename) content = await $content(`${category}/${filename}/${lang}`).fetch();
+    if (filename) {
+      content = await $content(`${category}/${filename}/${lang}`).fetch();
+      // console.log(content)
+    }
     else {
-      contents = await $content(category,{ deep: true }).fetch();
+      contents = await $content(category,{ deep: true }).without(['body']).where({slug:lang}).sortBy('order','asc').fetch();
       // let lang=this.prefix;
-      contents=contents.filter(c=>{return c.slug===lang});
+      // contents=contents.filter(c=>{return c.slug===lang});
+      // console.log(contents)
     }
 
     // // console.log(contents);
@@ -93,7 +114,21 @@ export default {
     // this.content=content;
 
 
-    return {$content,category,filename,contents,content}
+    return {$content,category,filename,contents,content,lang}
+  },
+  watch:{
+    async key(val){
+      let where={slug:this.lang};
+      // if (val) where.$or=[{title:{$contains:val.split(' ')}},{description:{$contains:val.split(' ')}}];
+      if (val){
+        where.title={$contains:val.split(' ')};
+        // let description={$contains:val.split(' ')};
+        // where=[title,description]
+    }
+      let category=this.category;
+      this.contents = await this.$content(category,{ deep: true }).without(['body']).where(where).sortBy('order','asc').fetch();
+
+    }
   },
   // async mounted() {
   //   await this.init(this.$content,this.$route.query);
@@ -161,10 +196,39 @@ export default {
       return '';
     }
   },
+
   // watchQuery(newQuery, oldQuery){
   //   this.init(this.$content,newQuery)
   // }
 };
 </script>
-<style>
+<style lang="scss" >
+.toc {
+  list-style: none;
+  padding: 0 0 0 0;
+  line-height: 2;
+  font-size: 85%;
+}
+.rtl{
+  .toc-container{
+    border-left: 1px solid #d9d9d9;
+  }
+  .depth-2{
+    font-weight: bold;
+  }
+  .depth-3{
+    padding-right: 10px;
+  }
+}
+.ltr {
+  .toc-container{
+    border-right: 1px solid #d9d9d9;
+  }
+  .depth-2{
+    font-weight: bold;
+  }
+  .depth-3{
+    padding-left: 10px;
+  }
+}
 </style>

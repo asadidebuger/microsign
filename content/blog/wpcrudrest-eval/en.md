@@ -3,7 +3,7 @@ title: Participation in WPCrudRest evaluation
 description: 'You can help us to evaluate the WPCrudRest framework to improve it'
 ---
 
-## A)
+## A) Intro
 We plan to produce the main structure of a WordPress plugin for library management with the WP-CRUD-REST framework. The class diagram of the main components of this plugin is shown in the figure.
 First, watch the [tutorial videos](https://github.com/asadidebuger/WPCrudRest#guidance-videos) to learn how to use the plugin builder framework, then try to create a plugin that meets the following requirements using the tools provided:
 
@@ -20,9 +20,9 @@ First, watch the [tutorial videos](https://github.com/asadidebuger/WPCrudRest#gu
 Simple library (WordPress plugin) class diagram
 ![Simple library class-diagram](/content/wpcrudrest/classdiagram-lib.png)
 
-## B)
+## B) Change model
 After creating the plugin, try to make changes in the UI part and check the correct application of the changes by reinstalling the plugin.
 
-## C)
+## C) Questionnaire
 According to the experience you have gained Complete the [Questionnaire](https://docs.google.com/forms/d/e/1FAIpQLSdypbU4p6AiIriKDoX_Fx14KMFsyR1sHJkAlXWY0iMkGG5VJw/viewform) and evaluate the provided framework:
 **[Complete questionnaire](https://docs.google.com/forms/d/e/1FAIpQLSdypbU4p6AiIriKDoX_Fx14KMFsyR1sHJkAlXWY0iMkGG5VJw/viewform)**
