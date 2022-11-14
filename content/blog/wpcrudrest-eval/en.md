@@ -1,6 +1,7 @@
 ---
 title: Participation in WPCrudRest evaluation
 description: 'You can help us to evaluate the WPCrudRest framework to improve it'
+order: 10
 ---
 
 ## A) Intro
