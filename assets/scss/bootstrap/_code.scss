@@ -3,6 +3,9 @@ code {
   font-size: $code-font-size;
   color: $code-color;
   word-break: break-word;
+  background: #f2f2f2;
+  padding: 5px;
+  border-radius: 3px;
 
   // Streamline the style when inside anchors to avoid broken underline and more
   a > & {

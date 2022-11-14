@@ -203,6 +203,13 @@ export default {
 };
 </script>
 <style lang="scss" >
+.nuxt-content-container{
+  img{
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+  }
+}
 .toc {
   list-style: none;
   padding: 0 0 0 0;
