@@ -203,7 +203,7 @@ export default {
 };
 </script>
 <style lang="scss" >
-.nuxt-content-container{
+.content-container{
   img{
     margin-right: auto;
     margin-left: auto;

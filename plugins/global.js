@@ -45,7 +45,7 @@ Vue.directive("click-outside", clickOutside);
 // 	color = localStorage.getItem("themeColor");
 // }
 // console.log(this)
-import("@/assets/scss/_font" + ((localStorage.getItem('locale')||'fa')==='fa'?'_fa':'') + ".scss")
+import("@/assets/scss/_font.scss")
 
 
 
