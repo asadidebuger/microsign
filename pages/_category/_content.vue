@@ -120,7 +120,7 @@ export default {
   async asyncData (args) {
     const {$content,query,params} =args;
 
-    console.log(query,params)
+    // console.log(this,args)
     let content=null;
     let related=[];
     let contents=null;
@@ -133,11 +133,21 @@ export default {
     }
     let filename=params.content;
     let lang=params.lang || $nuxt.$locale().code;
+    // console.log('filename',filename,'lang',lang)
     if (filename) {
       content = await $content(`${category}/${filename}/${lang}`).fetch();
+      // console.log('content',content,)
       if (content.tags?.length){
         for (const tag of content.tags) {
-          let result = await $content('/',{ deep: true }).without(['body']).where({slug:lang,tags:{$contains:tag}}).fetch();
+          // console.log('tag',tag);
+          let result
+          try {
+             result = await $content('',{ deep: true }).without(['body']).where({slug:lang,tags:{$contains:tag}}).fetch();
+
+          }catch (e) {
+            console.log('err',e)
+          }
+          // console.log('result',result);
           for (const c of result) {
             if (c.path===content.path) continue;
             if (related.findIndex(o=>o.path===c.path)<0) related.push(c);
@@ -151,11 +161,13 @@ export default {
 
       }
       else {
-        contents = await $content('/',{ deep: true }).without(['body']).where({slug:lang,tags:{$contains:tag}}).fetch();
+        contents = await $content('',{ deep: true }).without(['body']).where({slug:lang,tags:{$contains:tag}}).fetch();
 
       }
     }
-    return {$content,category,filename,contents,content,lang,related,tag}
+    const data={$content,category,filename,contents,content,lang,related,tag};
+    // console.log('data',data)
+    return data;
   },
   watch:{
     async key(val){
@@ -170,7 +182,7 @@ export default {
       }
       else {
         where.tags={$contains:this.tag};
-        this.contents = await this.$content('/',{ deep: true }).without(['body']).where(where).fetch();
+        this.contents = await this.$content('',{ deep: true }).without(['body']).where(where).fetch();
       }
 
 
@@ -219,14 +231,14 @@ export default {
     //   this.content=content;
     //
     // },
-    getContentName(dir){
-      let cat=this.category||'/';
-      let name=dir.substring(dir.indexOf(cat)+cat.length+1);
-      // name=name.substring(0,name.length-1)
-      // console.log(name);
-      return name;
-
-    }
+    // getContentName(dir){
+    //   let cat=this.category||'/';
+    //   let name=dir.substring(dir.indexOf(cat)+cat.length+1);
+    //   // name=name.substring(0,name.length-1)
+    //   // console.log(name);
+    //   return name;
+    //
+    // }
   },
   computed:{
     title(){
