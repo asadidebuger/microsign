@@ -67,6 +67,10 @@
                             </div>
                         </div>
                     </div>
+                  <div >
+                    <img class="sign" :src="`/microsign-${prefix}.png`" :alt="$t('microsign')" >
+                  </div>
+
                 </card>
             </div>
         </section>
@@ -100,7 +104,28 @@ export default {
       ],
     }
   },
+  computed: {
+    prefix() {
+      return this.$locale().code;
+    }
+  }
 };
 </script>
-<style>
+<style lang="scss">
+.rtl{
+  .sign{
+    float: left;
+  }
+}
+.ltr{
+  .sign{
+    float: right;
+  }
+}
+.sign{
+  margin-top: -100px;
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 200px;
+}
 </style>
