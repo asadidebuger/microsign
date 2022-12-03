@@ -2,6 +2,7 @@
 title: 'WPCrudRest: WordPress plugin creator'
 description: A Powerful Wordpress CRUD & RESTful plugin Generator framework
 order: 3
+tags: [wpcrudrest]
 ---
 ![wpcrudrest](/content/wpcrudrest/wpcrudrest-banner.png)
 

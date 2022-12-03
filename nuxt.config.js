@@ -11,10 +11,10 @@ const fs = require('fs');
 const routes=[];
 const cats=fs.readdirSync(appDir);
 const sitemapEx=[];
-// locales.forEach(l=>{
-//   routes.push('/'+l.code+'/content')
-//
-// })
+locales.forEach(l=>{
+  routes.push('/'+l.code+'/tag/tag')
+
+})
 cats.forEach(cat=>{
   if (cat.startsWith('_'))return;
   let d=path.join(appDir,cat);

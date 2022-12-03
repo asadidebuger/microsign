@@ -2,6 +2,7 @@
 title: آموزش نصب و راه‌اندازی WPCrudRest
 description: در این مقاله شیوه نصب و راه‌اندازی ابزار WPCrudRest برای تولید خودکار افزونه‌های وردپرس را توضیح می‌دهیم.
 order: 3
+tags: [wpcrudrest]
 ---
 ![wpcrudrest](/content/wpcrudrest/wpcrudrest-banner.png)
 ## معرفی

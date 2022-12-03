@@ -2,6 +2,7 @@
 title: Tutorial on designing WordPress plugins with WPCrudRest
 description: In this article, we try to teach how to use the graphic editor of the WPCrudRest WordPress plugin. By using WPCrudRest, you can develop WordPress plugins automatically.
 order: 5
+tags: [wpcrudrest]
 ---
 
 ## Introduction

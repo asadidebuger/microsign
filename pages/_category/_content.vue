@@ -31,7 +31,7 @@
                                   >
                                     {{$t('Table of contents')}}
                                   </h4>
-                                  <nav class="mt-4">
+                                  <nav >
                                     <ul class="toc" >
                                       <li :class="'depth-'+link.depth" v-for="link of content.toc" :key="link.id">
                                         <a role="button" class="transition-colors duration-75 text-base mb-2 block "
@@ -39,6 +39,35 @@
                                       </li>
                                     </ul>
                                   </nav>
+                                </div>
+
+                                <div class="related-box sticky top-16 mt-4 pt-3">
+                                  <h4
+                                    class="text-black font-h2 text-lg lg:mt-16 tracking-wider"
+                                  >
+                                    {{$t('Related Articles')}}
+                                  </h4>
+                                  <nav >
+                                    <ul class="related" >
+                                      <li class="small" v-for="(rContent,i) of related" :key="'related-'+i">
+                                        <router-link role="button" class="transition-colors duration-75 text-base mb-2 block "
+                                                     :to="`/${prefix}${rContent.dir}`">{{ rContent.title }}
+                                        </router-link>
+
+                                      </li>
+                                    </ul>
+                                  </nav>
+                                </div>
+
+
+
+                                <div class="tags-box sticky top-16 mt-4 pt-3">
+                                  <h4 class="text-black font-h2 text-lg lg:mt-16 tracking-wider">
+                                    {{$t('Tags')}}
+                                  </h4>
+                                  <router-link :to="`/${prefix}/tag/tag/?tag=${tag}`" role="button" class="badge badge-primary ml-2"  v-for="(tag,i) of content.tags||[]" :key="'tag-'+i">
+                                  {{tag}}
+                                  </router-link>
                                 </div>
                               </aside>
                               <div class="content-container col-lg-9 mt-5">
@@ -54,13 +83,13 @@
                   </div>
                   <div class="px-4">
                     <div class=" py-3 ">
-                      <span>{{$t('in category')}}: {{$t(category)}}</span>
+                      <span>{{$t(category?'in category':'Tag')}}</span>: <span class="badge badge-primary ml-2">{{$t(category)||tag}}</span>
                       <h1 class="text-center br">{{title}}</h1>
 
                       <div class="row justify-content-center border-top">
                         <ul class="content-container col-lg-9 mt-5 list-unstyled">
                           <li v-for="(c,i) of contents" :key="'item'+i">
-                            <router-link :to="'/'+prefix+'/'+category+'/'+getContentName(c.dir)">
+                            <router-link :to="'/'+prefix+c.dir">
                               <h2>{{c.title}}</h2>
                               <p>{{c.description}}</p>
                               <hr>
@@ -91,42 +120,60 @@ export default {
   async asyncData (args) {
     const {$content,query,params} =args;
 
+    console.log(query,params)
     let content=null;
+    let related=[];
     let contents=null;
     let category=params.category;
+    let tag=query.tag;
+    if (tag||category==='tag') {
+      if (!tag) tag=params.content;
+      category=null;
+      params.content=null;
+    }
     let filename=params.content;
     let lang=params.lang || $nuxt.$locale().code;
     if (filename) {
       content = await $content(`${category}/${filename}/${lang}`).fetch();
-      // console.log(content)
+      if (content.tags?.length){
+        for (const tag of content.tags) {
+          let result = await $content('/',{ deep: true }).without(['body']).where({slug:lang,tags:{$contains:tag}}).fetch();
+          for (const c of result) {
+            if (c.path===content.path) continue;
+            if (related.findIndex(o=>o.path===c.path)<0) related.push(c);
+          }
+        }
+      }
     }
     else {
-      contents = await $content(category,{ deep: true }).without(['body']).where({slug:lang}).sortBy('order','asc').fetch();
-      // let lang=this.prefix;
-      // contents=contents.filter(c=>{return c.slug===lang});
-      // console.log(contents)
+      if (category){
+        contents = await $content(category,{ deep: true }).without(['body']).where({slug:lang}).sortBy('order','asc').fetch();
+
+      }
+      else {
+        contents = await $content('/',{ deep: true }).without(['body']).where({slug:lang,tags:{$contains:tag}}).fetch();
+
+      }
     }
-
-    // // console.log(contents);
-    // this.category=category;
-    // this.filename=filename;
-    // this.contents=contents;
-    // this.content=content;
-
-
-    return {$content,category,filename,contents,content,lang}
+    return {$content,category,filename,contents,content,lang,related,tag}
   },
   watch:{
     async key(val){
       let where={slug:this.lang};
-      // if (val) where.$or=[{title:{$contains:val.split(' ')}},{description:{$contains:val.split(' ')}}];
-      if (val){
-        where.title={$contains:val.split(' ')};
-        // let description={$contains:val.split(' ')};
-        // where=[title,description]
-    }
+      if (val) {
+        where.title = {$contains: val.split(' ')};
+      }
       let category=this.category;
-      this.contents = await this.$content(category,{ deep: true }).without(['body']).where(where).sortBy('order','asc').fetch();
+
+      if (category){
+        this.contents = await this.$content(category,{ deep: true }).without(['body']).where(where).sortBy('order','asc').fetch();
+      }
+      else {
+        where.tags={$contains:this.tag};
+        this.contents = await this.$content('/',{ deep: true }).without(['body']).where(where).fetch();
+      }
+
+
 
     }
   },
@@ -173,7 +220,7 @@ export default {
     //
     // },
     getContentName(dir){
-      let cat=this.category;
+      let cat=this.category||'/';
       let name=dir.substring(dir.indexOf(cat)+cat.length+1);
       // name=name.substring(0,name.length-1)
       // console.log(name);
@@ -216,7 +263,27 @@ export default {
   line-height: 2;
   font-size: 85%;
 }
+aside h4{
+  background: #f4f4f4;
+  padding: 5px;
+  text-align: center;
+}
+.related {
+  list-style: none;
+  padding: 0 0 0 0;
+  line-height: 1.3;
+  margin: 0 -7px 0 -19px;
+
+  li {
+    border-bottom: 1px dashed #cbcbcb;
+    margin-top: 5px;
+    padding: 5px;
+  }
+}
 .rtl{
+  .related {
+    margin: 0 -19px 0 -7px;
+  }
   .toc-container{
     border-left: 1px solid #d9d9d9;
   }

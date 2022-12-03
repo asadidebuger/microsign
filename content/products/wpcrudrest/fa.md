@@ -1,6 +1,7 @@
 ---
 title: تولید خودکار افزونه های وردپرس با WPCrudRest
 description: WPCrudRest ابزاری است که با استفاده از آن می توانید افزونه های وردپرس را به صورت کاملا اتوماتیک و بدون کدنویسی تولید کنید.
+tags: [wpcrudrest]
 ---
 ![wpcrudrest](/content/wpcrudrest/wpcrudrest-banner.png)
 ## معرفی WPCrudRest
