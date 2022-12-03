@@ -1,6 +1,6 @@
 ---
-title: 'WPCrudRest: WordPress plugin creator'
-description: A Powerful Wordpress CRUD & RESTful plugin Generator framework
+title: 'How to setup WPCrudRest (Graphical WordPress plugin creator)'
+description: Guidance to deploy and config WPCrudRest framework and ready to generate  Wordpress CRUD & RESTful plugin by graphical editor.
 order: 3
 tags: [wpcrudrest]
 ---
