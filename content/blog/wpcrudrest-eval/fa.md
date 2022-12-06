@@ -1,5 +1,5 @@
 ---
-title: مشارکت در ارزیابی افزونه ساز WPCrudRest
+title: مشارکت در ارزیابی WPCrudRest
 description: 'درصورتی که تمایل دارید در ارزیابی افزونه ساز وردپرس WPCrudRest شرکت کنید بعد از کار با ابزار پرسش نامه را تکمیل کنید'
 order: 10
 tags: [wpcrudrest]

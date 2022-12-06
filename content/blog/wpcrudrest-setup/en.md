@@ -7,16 +7,20 @@ tags: [wpcrudrest]
 ![wpcrudrest](/content/wpcrudrest/wpcrudrest-banner.png)
 
 ## Introduction
-This tool is the result of a master's thesis in [MDSE research group at Isfahan University](https://mdse.ui.ac.ir) and contains a set of Eclipse plugins that enable you to generate a WordPress plugin by graphical modelling. We use a Model-Driven approach to generate codes from the model.     
+WPCrudRest is a set of Eclipse plugins that enable you to **generate WordPress plugins only by graphically design them**. WPCrudRest provide a visual editor and let you to design WordPress plugin's structure and set their's properties. You can define entities and their's relationships, menu and menu items, list and form pages graphically. The generated plugin supports CRUD (**C**reate, **R**ead, **U**pdate, **D**elete) operations on the defined entities by the provided RESTful web-service. Also, the user can manage the data in the management panel. The access control management panel will be added in the WordPress _settings_ menu and will be accessible to administrators.     
 WPCrudRest framework is currently only available as a plugin for Eclipse. It used [Sirius](https://www.eclipse.org/sirius/) to provide a graphical modelling environment and [Acceleo](https://www.eclipse.org/acceleo/download.html) to transform models to code.
+
+### WPCrudRest Demo
+WPCrudRest Framework and created WordPress plugin demo:
+
+![WPCrudRest WordPress plugin creator](/content/wpcrudrest/wpcrudrest.gif)
+
 ## Please participate in the evaluation
 You can participate in the evaluation of the WPCrudRest framework through the following links:
 * **[Evaluation participate (English language)](/en/blog/wpcrudrest-eval)**
-
 * **[مشارکت در ارزیابی (فارسی)](/fa/blog/wpcrudrest-eval)**
 
-_WPCrudRest Framework and created WordPress plugin demo:_
-![WPCrudRest WordPress plugin creator](/content/wpcrudrest/wpcrudrest.gif)
+
 ## Test environment:
 This tool deployed and tested successfully on:
 * [Windows 10 64X](https://www.microsoft.com/en-us/software-download/windows10) 
@@ -39,7 +43,7 @@ This tool deployed and tested successfully on:
 - [Youtube play-list](https://www.youtube.com/playlist?list=PL8kI35qv4aXaRaETVfC0CgzlgtKy6e6Gk)
 - [Aparat play-list](https://www.aparat.com/v/pci6K?playlist=1773307)
 
-## Installation and use instructions:
+## Installation and use instructions
 
 ### You can follow the steps below to deploy and use the framework:
 
@@ -67,7 +71,7 @@ _Note: You can follow [**this link**](https://www.cloudways.com/blog/install-wor
 6. Click on "Finish" button to create modeling project
 
 ### D. Create "Crudrest Model"
-Note: The field type repository model is used to define entities' field types and if dosn't exist, modelling and generating code is not possible! This is recommended to use [exist pre-built field repository model](https://github.com/asadidebuger/WPCrudRest/blob/main/models/FieldTypeRepo.crudrest)!
+Note: The field type repository model is used to define entities' field types and if dosn't exist, modelling and generating code is not possible! This is recommended to use [the exist pre-built field repository model](https://github.com/asadidebuger/WPCrudRest/blob/main/models/FieldTypeRepo.crudrest)!
 1. Copy [FieldTypeRepo.crudrest](https://github.com/asadidebuger/WPCrudRest/blob/main/models/FieldTypeRepo.crudrest "FieldTypeRepo.crudrest") from [models](https://github.com/asadidebuger/WPCrudRest/tree/main/models "models") directory to project model *(or root)* directory
 2. You can simply copy one of the sample models from the [models](https://github.com/asadidebuger/WPCrudRest/tree/main/models) repository directory and jump to the next step
 2. Right click on project root in Eclipse Project (or Model) explorer
