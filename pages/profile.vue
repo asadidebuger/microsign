@@ -25,7 +25,7 @@
                             </div>
                             <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
                                 <div class="card-profile-actions py-4 mt-lg-0">
-                                  <a class="btn btn-primary mr-4" href="www.linkedin.com/in/asadidebuger" target="_blank" rel="noopener"
+                                  <a class="btn btn-primary mr-4" href="https://www.linkedin.com/in/asadidebuger" target="_blank" rel="noopener"
                                      data-toggle="tooltip" :title="$t('Connect to me')" >
                                     <i class="fa fa-linkedin-square"></i>
                                     <span class="nav-link-inner--text">{{$t('Connect to me')}}</span>
