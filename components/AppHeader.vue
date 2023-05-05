@@ -98,7 +98,7 @@
                     </a>
                 </li>
               <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href="https://www.linkedin.com/in/mohammad-asadi-8ab426158/" target="_blank" rel="noopener"
+                    <a class="nav-link nav-link-icon" href="https://www.linkedin.com/in/asadidebuger/" target="_blank" rel="noopener"
                        data-toggle="tooltip" :title="$t('Connect to me')">
                         <i class="fa fa-linkedin-square"></i>
                         <span class="nav-link-inner--text d-lg-none">{{$t('Linkedin')}}</span>

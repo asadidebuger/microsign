@@ -54,7 +54,7 @@
                                 <small class="font-weight-light ltr">(@asadidebuger)</small>
                             </h3>
                             <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i><span class="fa fa-map-marker"></span> {{$t('Islamic Republic of Iran, Isfahan')}}</div>
-                            <a href="https://mdse.ui.ac.ir/" target="_blank"><div class="h6 mt-4"><i class="ni ni-hat-3 mr-2"></i> {{$t('MDSE research group')}}</div></a>
+                            <a href="https://mdse.ui.ac.ir/member/mohammadreza-asadi/" target="_blank"><div class="h6 mt-4"><i class="ni ni-hat-3 mr-2"></i> {{$t('MDSE research group')}}</div></a>
                             <div><i class="ni  mr-2"></i> {{$t('Faculty of Computer Engineering, University of Isfahan')}}</div>
                           <br>
                             <div><i class="ni ni-briefcase-24 mr-2"></i> {{$t('AboutMeExtra')}}</div>
